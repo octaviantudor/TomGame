@@ -1,0 +1,8 @@
+rootProject.name = 'TOM'
+include 'Domain'
+include 'Persistence'
+include 'Client'
+include 'RestServices'
+include 'Server'
+include 'Services'
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="jucatorRepo" class="tom.repository.JucatorRepository"/>
+    <bean id="jocRepo" class="tom.repository.JocRepository"/>
+    <bean id="raspunsRepo" class="tom.repository.RaspunsRepository"/>
+    <bean id="service1" class="tom.service.TomService">
+        <constructor-arg ref="jucatorRepo"/>
+        <constructor-arg ref="raspunsRepo"/>
+        <constructor-arg ref="jocRepo"/>
+
+    </bean>
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="tom"/>
+        <property name="service" ref="service1"/>
+        <property name="serviceInterface" value="tom.services.ITomService"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+
+
+</beans>

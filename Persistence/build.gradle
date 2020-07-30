@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.15.Final'
+    //compile group: 'org.umlg', name: 'sqlg-mysql-dialect', version: '2.0.0'
+
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.16.1'
+
+    compile project (':Domain')
+    compile 'org.springframework:spring-context:4.3.8.RELEASE'
+}
